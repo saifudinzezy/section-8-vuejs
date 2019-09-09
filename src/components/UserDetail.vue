@@ -4,6 +4,7 @@
         <p>Many Details</p>
         <!-- pangil key utk mengubah nilai name yg nantinya akan dipanggil oleh parent -->
         <p>User name: {{ switchName() }}</p>
+        <button @click="resetName">Reset Name</button>
     </div>
 </template>
 
@@ -18,8 +19,14 @@
             default: 'Max' //defauld nilai
         },
         methods: {
-            switchName(){
+            switchName(){ //
                 return this.myName.split("").reverse().join("");
+            },
+            resetName(){ //reset name
+                this.myName = 'Max';
+                //emit(nama_listener, datas)
+                //fungsi utk komunikasi / kirim data ke parent => User.vue  dari child UserDetail.vue
+                this.$emit('nameWasReset', this.myName);
             }
         },
     }
