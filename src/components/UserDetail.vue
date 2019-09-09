@@ -10,7 +10,13 @@
 <script>
     export default {
         //key untuk parrent
-        props: ['myName'],
+        //validasi
+        props: {
+            //hanya menerima inputan string jika mau byk simpan diarray
+            myName: String,            
+            required: true, //harus diisi
+            default: 'Max' //defauld nilai
+        },
         methods: {
             switchName(){
                 return this.myName.split("").reverse().join("");
