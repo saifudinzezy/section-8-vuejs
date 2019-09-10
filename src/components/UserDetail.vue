@@ -4,6 +4,7 @@
     <p>Many Details</p>
     <!-- pangil key utk mengubah nilai name yg nantinya akan dipanggil oleh parent -->
     <p>User name: {{ switchName() }}</p>
+    <p>User age: {{ userAge }}</p>
     <button @click="resetName">Reset Name</button>
     <!-- pangil nama fungsi yg sdh di ambil parent ditampung di props -->
     <button @click="resetFn()">Reset Name</button>
@@ -22,7 +23,9 @@ export default {
       default: "Max" //defauld nilai
     },
     //tangkap fungsi resetFn kiriman dari parent => User.vue 
-     resetFn: Function
+     resetFn: Function,
+    //tangkap fungsi userAge kiriman dari parent => User.vue 
+     userAge: Number
   },
   methods: {
     switchName() {

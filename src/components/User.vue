@@ -11,14 +11,20 @@
         <!-- name kedua dari parent => User.vue -->
         <!-- nama fungsi dari child = UserDetail.vue @nameWasReset="variabel_parent(User.vue) = variabel_child(UserDetail.vue)" -->
         <!-- nama fungsi resetFn="nama_fungsi" utk child => UserDetail.vue -->
+        <!-- @nameWasReset nama fungsi dari UserDetail -->
         <app-user-detail 
             :myName="name"
             @nameWasReset="name = $event"
-            :resetFn="resetName">
+            :resetFn="resetName"
+            :userAge="age">
         </app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <app-user-edit></app-user-edit>
+        <!-- @ageWasEdited fungsi dari child UserEdit.vue -->
+        <app-user-edit 
+            :userAge="age"
+            @ageWasEdited="age = $event">
+        </app-user-edit>
       </div>
     </div>
   </div>
@@ -32,7 +38,8 @@ export default {
   data() {
     return {
       //variabel name
-      name: "Max"
+      name: "Max",
+      age: 27
     };
   },
   methods: {
@@ -40,6 +47,7 @@ export default {
       //ubah nilai name
       this.name = "Anna"; //jgn lupa titik koma
     },
+
     //reset name untk komunikasi ke child => UserDetail.vue
     resetName() {
       this.name = "Max";
